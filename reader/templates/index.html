@@ -1,0 +1,356 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>News App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+    /**********************************/
+/********* Header Nav CSS *********/
+/**********************************/
+.header {
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+}
+
+.header.header-sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.header .navbar {
+    height: 100%;
+    padding: 0;
+}
+
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-nav .nav-link:focus,
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    padding: 50px 10px 8px 10px;
+    color: #ffffff;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    background: rgba(228, 122, 46, .2);
+    border-bottom: 2px solid #E47A2E;
+    transition: none;
+}
+
+.header .dropdown-menu {
+    margin-top: 0;
+    border: 0;
+    border-radius: 0;
+    background: #f8f9fa;
+}
+
+
+    .header,
+    .header .navbar {
+        background: #353535 !important;
+    }
+
+    .header .navbar-brand {
+        display: none;
+    }
+
+    .header a.nav-link {
+        padding: 8px 15px;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+
+
+
+
+</style>
+    <style>
+search {
+    width: 100%;
+}
+
+.header .search input[type=text] {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    color: #666666;
+    border: 1px solid #353535;
+}
+
+.header .search input[type=text]:focus {
+    border-color: #E47A2E;
+}
+
+.header .search button {
+    position: absolute;
+    width: 40px;
+    height: 38px;
+    top: 1px;
+    right: 16px;
+    padding: 0 15px;
+    border: none;
+    background: red;
+    color: #353535;
+}
+
+.header .search button:hover {
+    background: #E47A2E;
+    color: #ffffff;
+}
+</style>
+    <style>
+        search {
+    width: 100%;
+}
+
+.top-header .search input[type=text] {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    color: #666666;
+    border: 1px solid #353535;
+}
+
+.top-header .search input[type=text]:focus {
+    border-color: #E47A2E;
+}
+
+.top-header .search button {
+    position: absolute;
+    width: 40px;
+    height: 38px;
+    top: 1px;
+    right: 16px;
+    padding: 0 15px;
+    border: none;
+    background: none;
+    color: red;
+}
+
+.top-header .search button:hover {
+    background: #E47A2E;
+    color: #ffffff;
+}
+    </style>
+</head>
+<body>
+     <!-- Header Start -->
+        <div class="header">
+            <div class="container">
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+<img src="{% static 'reader/images/news-icon-18.png' %}" alt="" width="140px" height="80px" class="d-inline-block align-text-top" style="position:fixed; top:13px; left:44px;">
+
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav m-auto">
+
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"></a>
+                                <div class="dropdown-menu">
+
+                                </div>
+                            </div>
+                            <a href="http://127.0.0.1:8000/sub" class="nav-item nav-link">Contact Us</a>
+                        </div>
+                        <div class="col-lg-6 col-md-4">
+                        <div class="search">
+
+  <form action="" method="get">
+      <input type="text" placeholder="Search.." name="search" style="margin-radius:14px;">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+</div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="whole">
+            <div>
+        {% include 'sidebar.html' %}
+    </div>
+    <div class="container" id="articles-container">
+        {% for value in data %}
+        <div class="card mb-3 box" style="max-width:750px; margin: auto; border: 3px solid #BB8FCE; border-radius:23px; padding:5px; background-color:rgb(231,230,241); top:30px; color:#273746 ;">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{value.url}}" target="_blanck">{{value.title}}</a></h5>
+                        <p class="card-text">{{value.description}}</p>
+                        <p class="card-text"><small class="text-muted">{{value.source.name}}</small></p>
+                        <p class="card-text"><small class="text-muted">{{value.publishedAt}}</small></p>
+
+                    </div>
+                </div>
+            
+                <div class="col-md-4 img-box">
+                    <img src="{{value.image}}" class="card-img" alt="..." height="100%">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <h1 id="loading">Loading....</h1>
+    </div>
+</body>
+<style>
+articles-container{
+    margin-left: 250px;
+}
+.box{
+    transition-property: box-shadow, transform;
+    transition-duration: 1s;
+}
+.box:hover{
+    /* box-shadow: 1px 2px 3px #8080807a; */
+    box-shadow: 1px 2px 3px 0px #00bcffb0;
+    transform: translateY(-9px);
+}
+.img-box{
+    padding: 15px;
+}
+.img-box img{
+    border-radius: 15px;
+    object-fit: cover;
+}
+#loading{
+    text-align: center;
+    display: none;
+}
+</style>
+<script>
+
+$(document).ready(function() {
+    console.log( "ready!" );
+    el = document.getElementsByClassName("text-muted")
+    for (i = 0; i < el.length; i++) {
+        t = document.getElementsByClassName("text-muted")[i].innerText
+
+    }
+});
+var page = 2;
+var window_scroll = true;
+var search = "{{ search }}";
+
+window.addEventListener('scroll', function(e) {
+    // scroll check
+    console.log("scroll check...")
+    if(window_scroll){
+        if((window.innerHeight + window.scrollY) >= (document.body.scrollHeight-200)){
+            window_scroll = false;
+            document.getElementById("loading").style.display = "block";
+            $.ajax({
+                url: '/next?page=' + page + '&search=' + search,
+                dataType: 'json',
+                success: function (data) {
+                    if (data["success"]) {
+                        articles = data["data"]
+                        articles_html = ''
+                        for (i = 0; i < articles.length; i++) {
+                            articles_html += ' \
+                            <div class="card mb-3 box" style="max-width:750px; margin: auto; border: 3px solid #BB8FCE; border-radius:23px; padding:5px; background-color:rgb(231,230,241); color:#273746 ;"">\
+                                <div class="row">\
+                                    <div class="col-md-8">\
+                                        <div class="card-body">\
+                                            <h5 class="card-title"><a href="'+ articles[i]["url"] +'" target="_blanck">'+ articles[i]["title"] +'</a></h5>\
+                                            <p class="card-text">'+ articles[i]["description"] +'</p>\
+                                            <p class="card-text"><small class="text-muted">'+ articles[i]["publishedAt"] +'</small></p>\
+                                            <p class="card-text"><small class="text-muted">'+ articles[i]["source.name"] +'</small></p>\
+                                        </div>\
+                                    </div>\
+                                            \
+                                    <div class="col-md-4 img-box">\
+                                        <img src="'+ articles[i]["image"] +'" class="card-img" alt="..." height="100%">\
+                                    </div>\
+                                </div>\
+                            </div>\
+                            '
+                        }
+                        $("#articles-container").append(articles_html);
+                        page += 1
+                        window_scroll = true;
+                        document.getElementById("loading").style.display = "none";
+                    }
+                    else {
+                        console.log("Failed")
+                        window_scroll = true;
+                        document.getElementById("loading").style.display = "none";
+                    }
+                }
+            });
+        }
+    }
+})
+
+
+</script>
+
+<script>
+    (function ($) {
+    "use strict";
+
+    // Sticky Navbar
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 90) {
+            $('.header').addClass('header-sticky');
+        } else {
+            $('.header').removeClass('header-sticky');
+        }
+    });
+
+
+    // Dropdown on mouse hover
+    $(document).ready(function () {
+        function toggleNavbarMethod() {
+            if ($(window).width() > 768) {
+                $('.navbar .dropdown').on('mouseover', function () {
+                    $('.dropdown-toggle', this).trigger('click');
+                }).on('mouseout', function () {
+                    $('.dropdown-toggle', this).trigger('click').blur();
+                });
+            } else {
+                $('.navbar .dropdown').off('mouseover').off('mouseout');
+            }
+        }
+        toggleNavbarMethod();
+        $(window).resize(toggleNavbarMethod);
+    });
+})(jQuery);
+</script>
+<style>
+    .tran{
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  border-radius:15px;
+  cursor: pointer;
+  font-size: 15px;
+  display: inline-block;
+  position: fixed;
+  bottom: 400px;
+  right: 16px;
+  top:500px;
+    }
+</style>
+<style>
+    .whole{
+    background-color:#D0ECE7 ;
+    }
+</style>
+<div class="tran" id="google_translate_element" style="right:0px;">
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'default'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+   </div>
+
+</html>

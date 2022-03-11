@@ -1,0 +1,150 @@
+
+<style>
+
+    .sidebar{
+        background-color:#D0ECE7;
+        position:fixed;
+        width: 250px;
+        height: 100%;
+        top: 85px;
+        left: 0px;
+        margin-radius:14px;
+    }
+    .sidebar a{
+        width: 250px;
+        display: block;
+        margin: 15px 0px;
+        padding: 8px 5px;
+        font-weight: bolder;
+        font-size: large;
+        color: #BA4A00;
+        text-decoration: none;
+        background-color: #A6ACAF;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 0px 0.5px 1px cyan;
+        text-align: center;
+
+
+        .bottomright {
+  position: absolute;
+    }
+</style>
+<div>
+
+<div class="sidebar">
+
+   {% load static %}
+
+    <a href="{% url 'Home' %}?search=top">Home</a>
+    <a href="{% url 'Home' %}?search=Covid">Covid</a>
+    <a href="{% url 'cat' %}?category=Business">Business</a>
+    <a href="{% url 'cat' %}?category=Technology">Tech News</a>
+    <a href="{% url 'cat' %}?category=Health">Health</a>
+    <a href="{% url 'cat' %}?category=Science">Science</a>
+    <a href="{% url 'cat' %}?category=Sports">Sports</a>
+    <a href="{% url 'Home' %}?search=Gaming">Gaming</a>
+    <a href="{% url 'Home' %}?search=Crypto">Crypto</a>
+
+</div>
+</div>
+
+<style>
+.dropbtn {
+  background-color: #D2B4DE;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  border-radius:15px;
+  cursor: pointer;
+  font-size: 15px;
+  width:100px
+}
+
+.dropdown {
+  display: inline-block;
+  position: fixed;
+  bottom: 400px;
+  right: 16px;
+
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  max-height:10px:
+  z-index: 2000;
+  max-height: 250px;
+		overflow-x: hidden;
+		overflow-y: auto;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 2px 2px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #D1F2EB; color:black;}
+</style>
+<div class="dropdown" style="float:left;right:150px;">
+  <button class="dropbtn">Publishers</button>
+  <div class="dropdown-content"style="left:40px;">
+      <a href="{% url 'so' %}?sources=bbc-news">BBC News</a>
+      <a href="{% url 'so' %}?sources=the-times-of-india">Times of India</a>
+      <a href="{% url 'so' %}?sources=cnn">CNN</a>
+      <a href="{% url 'so' %}?sources=talksport">TalkSport</a>
+      <a href="{% url 'so' %}?sources=cbs-news">CBS-News</a>
+      <a href="{% url 'so' %}?sources=abc-news">ABC News</a>
+      <a href="{% url 'so' %}?sources=business-insider">Business Insider</a>
+      <a href="{% url 'so' %}?sources=entertainment-weekly">Entertainment Weekly</a>
+      <a href="{% url 'so' %}?sources=engadget">Engadget</a>
+      <a href="{% url 'so' %}?sources=associated-press">Associated Press</a>
+      <a href="{% url 'so' %}?sources=espn-cric-info">ESPN Cric Info</a>
+      <a href="{% url 'so' %}?sources=the-verge">The Verge</a>
+      <a href="{% url 'so' %}?sources=fox-news">Fox News</a>
+      <a href="{% url 'so' %}?sources=buzzfeed">Buzzfeed</a>
+      <a href="{% url 'so' %}?sources=bloomberg">Bloomberg</a>
+      <a href="{% url 'so' %}?sources=buzzfeed">Buzzfeed</a>
+  </div>
+</div>
+
+<div class="dropdown" style="float:right;">
+  <button class="dropbtn">Country</button>
+  <div class="dropdown-content"style="right:0px;">
+    <a href="{% url 'con' %}?country=au">Australia</a>
+      <a href="{% url 'con' %}?country=in">India</a>
+      <a href="{% url 'con' %}?country=us">United States</a>
+      <a href="{% url 'con' %}?country=gb">United Kingdom</a>
+      <a href="{% url 'con' %}?country=ie">Ireland</a>
+      <a href="{% url 'con' %}?country=nz">New Zealand</a>
+      <a href="{% url 'con' %}?country=za">South Africa</a>
+      <a href="{% url 'con' %}?country=ca">Canada</a>
+      <a href="{% url 'con' %}?country=sa">Saudi Arabia</a>
+      <a href="{% url 'con' %}?country=jp">Japan</a>
+      <a href="{% url 'con' %}?country=de">Germany</a>
+      <a href="{% url 'con' %}?country=ru">Russia</a>
+      <a href="{% url 'con' %}?country=ch">China</a>
+      <a href="{% url 'con' %}?country=fr">France</a>
+      <a href="{% url 'con' %}?country=it">Italy</a>
+      <a href="{% url 'con' %}?country=ng">Nigeria</a>
+      <a href="{% url 'con' %}?country=mx">Mexico</a>
+      <a href="{% url 'con' %}?country=my">Malaysia</a>
+
+  </div>
+</div>
+<style>
+    .body{
+    background-color:#D0ECE7;
+    }
+
+</style>
+
